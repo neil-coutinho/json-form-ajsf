@@ -59,7 +59,7 @@ export class InputWidgetComponent implements OnInit {
   controlDisabled = false;
   boundControl = false;
   options: any;
-  autoCompleteList: string[] = [];
+  
   @Input() layoutNode: any;
   @Input() layoutIndex: number[];
   @Input() dataIndex: number[];

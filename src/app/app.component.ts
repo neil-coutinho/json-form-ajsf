@@ -1,6 +1,7 @@
 import { WidgetLibraryService } from '@ajsf/core';
 import { Component, OnInit } from '@angular/core';
 import { InputWidgetComponent } from './components/input-widget/input-widget.component';
+import { SectionWidgetComponent } from './components/section-widget/section-widget.component';
 
 @Component({
   selector: 'app-root',
@@ -90,10 +91,10 @@ export class AppComponent implements OnInit{
           ]
         } ]
       },
-      { "type": "section",
+      { "type": "section-widget",
         "title": "Notes",
         "expandable": true,
-        "expanded": false,
+        "expanded": true,
         "items": [ { "key": "notes", "type": "textarea", "notitle": true } ]
       }
     ]
@@ -124,6 +125,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.widgetLibraryService.registerWidget('input-widget', InputWidgetComponent);
+    this.widgetLibraryService.registerWidget('section-widget', SectionWidgetComponent);
   }
 
   onSubmit() {

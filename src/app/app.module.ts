@@ -7,11 +7,13 @@ import { Bootstrap4FrameworkModule } from '@ajsf/bootstrap4';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InputWidgetComponent } from './components/input-widget/input-widget.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SectionWidgetComponent } from './components/section-widget/section-widget.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputWidgetComponent
+    InputWidgetComponent,
+    SectionWidgetComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +25,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [InputWidgetComponent]
+  entryComponents: [InputWidgetComponent , SectionWidgetComponent]
 })
 export class AppModule { }
