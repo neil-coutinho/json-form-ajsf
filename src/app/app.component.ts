@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { WidgetLibraryService } from '@ajsf/core';
+import { Component, OnInit } from '@angular/core';
+import { InputWidgetComponent } from './components/input-widget/input-widget.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'json-form-ajsf';
-  public config = {
-    "schema": {
+
+    public schema = {
       "type": "object",
       "properties": {
         "first_name": { "type": "string" },
@@ -46,9 +48,13 @@ export class AppComponent {
         }
       },
       "required": [ "last_name" ]
-    },
-    "layout": [
-      { "type": "flex", "flex-flow": "row wrap", "items": [ "first_name", "last_name" ] },
+    }
+    public layout = [
+      { "type": "flex", "flex-flow": "row wrap", 
+      "items": [ 
+        {"type": 'input-widget',"key": "first_name"},
+        {"type": 'input-widget',"key": "last_name"}
+      ] },
       { "key": "address.street_1", "title": "Address", "placeholder": "Street" },
       { "key": "address.street_2", "notitle": true },
       { "type": "div",
@@ -90,8 +96,8 @@ export class AppComponent {
         "expanded": false,
         "items": [ { "key": "notes", "type": "textarea", "notitle": true } ]
       }
-    ],
-    "data": {
+    ]
+    public data = {
       "first_name": "Jane",
       "last_name": "Doe",
       "address": {
@@ -106,18 +112,22 @@ export class AppComponent {
         { "type": "work", "number": "702-987-6543" }
       ],
       "notes": "(This is an example of an uninteresting note.)"
-    },
-    "framework":  'bootstrap-4' 
-  }
+    }
+    
+  
   
 
-  constructor() {
+  constructor(private widgetLibraryService: WidgetLibraryService) {
 
   }
 
 
-  onSubmit($event) {
-    console.log($event)
+  ngOnInit() {
+    this.widgetLibraryService.registerWidget('input-widget', InputWidgetComponent);
+  }
+
+  onSubmit() {
+   
   }
 
 

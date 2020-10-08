@@ -1,4 +1,9 @@
-<json-schema-form
-  [form]="config"
-  (onSubmit)="onSubmit($event)">
+<json-schema-form #form
+[schema]="schema"
+[layout]="layout"
+[data] = "data"
+[framework]="'bootstrap-4'"
+
+
+(onSubmit)="onSubmit()">
 </json-schema-form>
